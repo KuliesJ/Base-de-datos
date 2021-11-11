@@ -1,1 +1,90 @@
-afegsrdhgfjhgkj,hk.jlk
+#include<iostream>
+
+using namespace std;
+
+//Persona
+class Persona{
+	public:
+		char Nombre[50];
+		char Dir[50];
+		char Telefono[20];
+		int DNI;
+};
+
+//Cliente
+class Cliente: public Persona{
+	public:
+		char fecha_i[21];
+		char fecha_f[21];
+		float pago;
+		int Reserva;
+};
+
+class Cliente clientes[100];
+
+//Empleado
+class Trabajador: public Persona{
+	public:
+		float sueldo;
+		int ID_trabajador;
+};
+
+//Cuartos
+class Cuarto{
+	public:
+		int numero;
+		int precio;
+		int estado;
+		int camas;
+		class Cliente cliente;
+};
+
+class Cuarto cuartos[20];
+
+class Trabajador trabajadores[100];
+
+void Registrar_cliente(){
+	std::cout<<"\nNombre del cliente: ";std::cin>>cuartos[1].cliente.Nombre;
+	std::cout<<"\nDirección: ";std::cin>>cuartos[1].cliente.Dir;
+	std::cout<<"\nTeléfono: ";std::cin>>cuartos[1].cliente.Telefono;
+	std::cout<<"\nDNI: ";std::cin>>cuartos[1].cliente.DNI;
+	std::cout<<"\nFecha de ingreso: (DDMMAAAA)";std::cin>>cuartos[1].cliente.fecha_i;
+	std::cout<<"\nFecha de salida: (DDMMAAAA)";std::cin>>cuartos[1].cliente.fecha_f;
+	std::cout<<"\nPago adelantado: ";std::cin>>cuartos[1].cliente.pago;
+}
+
+void Registrar_cuarto(){
+	std::cout<<"\nNumero de cuarto: ";std::cin>>cuartos[1].numero;
+	std::cout<<"\nPrecio: ";std::cin>>cuartos[1].precio;
+	cuartos[1].estado='N';
+	std::cout<<"\nNumero de camas: ";std::cin>>cuartos[1].camas;
+}
+
+void Buscar_cuartos(){
+	for(int i=0;i<20;i++){
+		if (cuartos[i].estado=='N'){
+			std::cout<<"El cuarto "<<i<<" esta vacio.";
+		}
+	}
+}
+
+int main(){
+	int operacion;
+	while (true){
+		std::cout<<"Operaciones\n1.- Registrar cliente\n2.- Registrar cuarto\n3.- Buscar cuartos vacios\n";
+		std::cin>>operacion;
+		switch(operacion){
+			case 1:
+				Registrar_cliente();
+				break;
+			case 2:
+				Registrar_cuarto();
+				break;
+			case 3:
+				Buscar_cuartos();
+			default:
+				break;
+		}
+	}
+	return 0;
+}
